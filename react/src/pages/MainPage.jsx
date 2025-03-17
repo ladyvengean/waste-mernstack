@@ -18,13 +18,13 @@ function MainPage() {
     setImage(dataURLtoFile(imageSrc, "captured_image.jpg"));
   }, [webcamRef]);
 
-  const handleImageChange = async (e) => {
-    const file = e.target.files[0];
-    if (file) {
-      setImage(file);
-      setPreview(URL.createObjectURL(file));
-    }
-  };
+  // const handleImageChange = async (e) => {
+  //   const file = e.target.files[0];
+  //   if (file) {
+  //     setImage(file);
+  //     setPreview(URL.createObjectURL(file));
+  //   }
+  // };
 
   const dataURLtoFile = (dataUrl, filename) => {
     let arr = dataUrl.split(","), mime = arr[0].match(/:(.*?);/)[1],
