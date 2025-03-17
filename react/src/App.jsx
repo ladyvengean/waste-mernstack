@@ -15,6 +15,8 @@ function App() {
         <Route path="/main" element={<MainPage />} />
         <Route path="/results" element={<ResultPage />} />
         <Route path="/profile" element={<UserProfile />} />
+
+        
       </Routes>
     </Router>
   );

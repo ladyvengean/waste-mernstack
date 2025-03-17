@@ -19,12 +19,16 @@ app.use(cookieParser())
 import userRouter from './routes/user.routes.js'
 import wasteReportRouter from "./routes/wasteReport.routes.js";
 import collectorRouter from "./routes/collector.routes.js";
+import geminiroute from "./routes/gemini.route.js";
+import { healthcheck } from "./controllers/healthcheck.controller.js";
 
 
 //routes declarartion
 app.use("/api/v1/users", userRouter)
 app.use("/api/v1/waste-report", wasteReportRouter);
 app.use("/api/v1/collectors", collectorRouter);
+app.use("/api/v1/upload", geminiroute);
+app.use("/api/v1/healthcheck", healthcheck);
 
 
 // app._router.stack.forEach((middleware) => {

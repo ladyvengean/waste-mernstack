@@ -23,15 +23,15 @@ function AuthPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    // Basic validation
+    
     if (isLogin) {
       if (!formData.email || !formData.password) {
         alert('Please fill in all fields');
         return;
       }
-      // Handle login logic here
+      
       console.log('Logging in with:', formData.email);
-      navigate('/main'); // Navigate to main page after login
+      navigate('/main'); 
     } else {
       // Registration
       if (!formData.name || !formData.email || !formData.password || !formData.confirmPassword) {
@@ -42,9 +42,9 @@ function AuthPage() {
         alert('Passwords do not match');
         return;
       }
-      // Handle registration logic here
+      
       console.log('Registering with:', formData);
-      navigate('/main'); // Navigate to main page after registration
+      navigate('/main'); 
     }
   };
 

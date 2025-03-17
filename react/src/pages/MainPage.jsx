@@ -2,6 +2,8 @@
 
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import imageCompression from 'browser-image-compression';
+import axios from 'axios';
 
 function MainPage() {
   const navigate = useNavigate();
@@ -9,11 +11,10 @@ function MainPage() {
   const [preview, setPreview] = useState(null);
   const [uploading, setUploading] = useState(false);
 
-  const handleImageChange = (e) => {
+  const handleImageChange = async (e) => {
     const file = e.target.files[0];
     if (file) {
       setImage(file);
-    
       const reader = new FileReader();
       reader.onloadend = () => {
         setPreview(reader.result);
@@ -22,24 +23,47 @@ function MainPage() {
     }
   };
 
-  const handleSubmit = (e) => {
+  const readBase64 = (file) => {
+    return new Promise((resolve) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result.split(',')[1]);
+      reader.readAsDataURL(file);
+    });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     
     if (!image) {
       alert('Please select an image to upload');
       return;
     }
-    
+
     setUploading(true);
-    
-    
-    setTimeout(() => {
+    try {
+      const options = {
+        maxSizeMB: 0.01,
+        maxWidthOrHeight: 1200,
+        useWebWorker: true,
+        quality: 0.6
+      };
+      const compressedFile = await imageCompression(image, options);
+      const base64String = await readBase64(compressedFile);
+
+      await axios.post('http://localhost:8000/api/v1/upload/gemini', {
+        imageData: base64String,
+      }, {
+        headers: { 'Content-Type': 'application/json' }
+      });
+
       setUploading(false);
-      
       navigate('/results');
-    }, 2000);
-    
-    
+    } catch (error) {
+      console.error('Error uploading image:', error);
+      setUploading(false);
+      //alert('Upload failed. Please try again.');
+      alert(error);
+    }
   };
 
   const goToProfile = () => {
@@ -48,7 +72,6 @@ function MainPage() {
 
   return (
     <div className="min-h-screen bg-gray-100">
-      {/* Header*/}
       <header className="bg-white shadow-md p-4">
         <div className="container mx-auto flex justify-between items-center">
           <h1 className="text-2xl font-bold text-gray-800">Waste Classification</h1>
@@ -61,7 +84,6 @@ function MainPage() {
         </div>
       </header>
       
-      {/* Main content */}
       <main className="container mx-auto p-4 mt-8">
         <div className="max-w-md mx-auto bg-white rounded-lg shadow-lg p-8">
           <h2 className="text-xl font-semibold text-gray-800 mb-6 text-center">

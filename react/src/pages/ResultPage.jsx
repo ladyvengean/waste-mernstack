@@ -40,7 +40,7 @@ function ResultPage() {
       
       <main className="container mx-auto p-4 mt-8">
         <div className="max-w-4xl mx-auto">
-          {/* Classification result */}
+          
           <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
             <h2 className="text-2xl font-bold text-center mb-6">Waste Classification</h2>
             

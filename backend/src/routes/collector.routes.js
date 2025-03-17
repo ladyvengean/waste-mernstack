@@ -1,7 +1,7 @@
-import express from "express";
+import { Router } from "express";
 import { getAvailableCollectors, assignCollector, updateCollectorStatus } from "../controllers/collector.controller.js";
 
-const router = express.Router();
+const router = Router();
 
 router.get("/available", getAvailableCollectors);
 router.post("/assign", assignCollector);
