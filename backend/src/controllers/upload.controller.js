@@ -7,7 +7,7 @@ import compressImage from '../utils/imageCompressor.js';
 const getResponse = asyncHandler(async (req, res) => {
 	const {imageData } = req.body;
 	
-	console.log('Image data', imageData);
+	//console.log('Image data', imageData);
 
 	try {
 		const compressedBase64Image = await compressImage(imageData);

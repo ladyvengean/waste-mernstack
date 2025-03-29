@@ -60,11 +60,16 @@ function MainPage() {
       const compressedFile = await imageCompression(image, options);
       const base64String = await readBase64(compressedFile);
 
-      await axios.post('http://localhost:8000/api/v1/upload/gemini', {
+      const result = await axios.post('http://localhost:8000/api/v1/upload/gemini', {
         imageData: base64String,
       }, {
         headers: { 'Content-Type': 'application/json' }
       });
+      let response = result.data.data.response;
+      console.log(result.data.data);
+      console.log(response);
+      localStorage.setItem('result',response);
+
 
       setUploading(false);
       navigate('/results');

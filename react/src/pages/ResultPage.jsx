@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 
 function ResultPage() {
   const navigate = useNavigate();
+  const result = localStorage.getItem('result');
   
   //mock data 
   const mockData = {
@@ -37,8 +38,8 @@ function ResultPage() {
           </button>
         </div>
       </header>
-      
-      <main className="container mx-auto p-4 mt-8">
+      <div>{result}</div>
+      {/* <main className="container mx-auto p-4 mt-8">
         <div className="max-w-4xl mx-auto">
           
           <div className="bg-white rounded-lg shadow-lg p-6 mb-8">
@@ -90,7 +91,7 @@ function ResultPage() {
           </div>
           
           {/* Nearest collectors */}
-          <div className="bg-white rounded-lg shadow-lg p-6">
+          {/* <div className="bg-white rounded-lg shadow-lg p-6">
             <h2 className="text-2xl font-bold text-center mb-6">Nearest Collection Centers</h2>
             
             <div className="space-y-4">
@@ -120,7 +121,7 @@ function ResultPage() {
             </div>
           </div>
         </div>
-      </main>
+      </main> */}
     </div>
   );
 }

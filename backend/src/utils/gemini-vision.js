@@ -16,11 +16,13 @@ async function run(imageData) {
 
 		const response = result.response;
 		const text = response.text();
-		console.log(text);
+
+		console.log('hello',text);
 		return text;
 	} catch (error) {
 		console.error('Error in run function:', error);
 		throw error; // Re-throw the error to be caught by the calling function
+		
 	}
 }
 
