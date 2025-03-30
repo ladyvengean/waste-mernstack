@@ -14,7 +14,12 @@ app.use(express.urlencoded({extended: true, limit: "16kb"}))
 app.use(express.static("public"))
 app.use(cookieParser())
 
+
+
 //routes
+app.get("/", (req, res) => {
+    res.send("Waste classification API is running");
+});
 
 import userRouter from './routes/user.routes.js'
 import wasteReportRouter from "./routes/wasteReport.routes.js";
