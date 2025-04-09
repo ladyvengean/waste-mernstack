@@ -13,7 +13,7 @@ function LandingPage() {
   };
 
   const handleAdminClick = () => {
-    alert('Admin functionality is not available yet.');
+    navigate('/admin');
   };
 
   return (

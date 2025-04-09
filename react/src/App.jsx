@@ -5,6 +5,9 @@ import AuthPage from './pages/AuthPage';
 import MainPage from './pages/MainPage';
 import ResultPage from './pages/ResultPage';
 import UserProfile from './pages/UserProfile';
+import AdminLanding from './pages/adminLanding';
+import AdminEntry from './pages/AdminEntry';
+import AdminWork from './pages/AdminWork';
 
 function App() {
   return (
@@ -15,6 +18,12 @@ function App() {
         <Route path="/main" element={<MainPage />} />
         <Route path="/results" element={<ResultPage />} />
         <Route path="/profile" element={<UserProfile />} />
+        <Route path="/admin" element={<AdminLanding />} />
+        <Route path="/verify" element={< AdminEntry/>} />
+        <Route path="/list" element={< AdminWork/>} />
+
+
+
 
         
       </Routes>
