@@ -1,7 +1,7 @@
 import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
-import userRouter from './routes/user.routes.js';
+import userRoutes from "./routes/user.routes.js";
 import wasteReportRouter from "./routes/wasteReport.routes.js";
 import collectorRouter from "./routes/collector.routes.js";
 import geminiroute from "./routes/gemini.route.js";
@@ -15,8 +15,8 @@ app.use(cors({
   credentials: true
 }));
 
-app.use(express.json({limit: "16kb"}));
-app.use(express.urlencoded({extended: true, limit: "16kb"}));
+app.use(express.json({limit: "50mb"}));
+app.use(express.urlencoded({extended: true, limit: "50mb"}));
 app.use(express.static("public"));
 app.use(cookieParser());
 
@@ -26,7 +26,7 @@ app.get("/", (req, res) => {
 });
 
 // Routes declaration
-app.use("/api/v1/users", userRouter);
+app.use("/api/v1/auth", userRoutes);
 app.use("/api/v1/waste-report", wasteReportRouter);
 app.use("/api/v1/collectors", collectorRouter);
 app.use("/api/v1/upload", geminiroute);
