@@ -19,7 +19,7 @@ app.use(cors({
   origin: [
     'http://localhost:3000',
     'http://localhost:5173', // if using Vite
-    'https://waste-mernstack.onrender.com', 
+    'https://waste-mernstack-rjb8.vercel.app/', 
     'https://*.vercel.app'
   ],
   credentials: true,
