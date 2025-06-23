@@ -10,10 +10,15 @@ import paperRouter from './routes/papers.routes.js';
 
 const app = express();
 
+// app.use(cors({
+//   origin: process.env.CORS_ORIGIN,
+//   credentials: true
+// }));
 app.use(cors({
-  origin: process.env.CORS_ORIGIN,
+  origin: ["https://waste-mernstack.onrender.com", "http://localhost:5173", "https://your-vercel-frontend.vercel.app"],
   credentials: true
 }));
+
 
 app.use(express.json({limit: "50mb"}));
 app.use(express.urlencoded({extended: true, limit: "50mb"}));
