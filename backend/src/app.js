@@ -10,9 +10,21 @@ import paperRouter from './routes/papers.routes.js';
 
 const app = express();
 
+// app.use(cors({
+//   origin: process.env.CORS_ORIGIN,
+//   credentials: true
+// }));
+
 app.use(cors({
-  origin: process.env.CORS_ORIGIN,
-  credentials: true
+  origin: [
+    'http://localhost:3000',
+    'http://localhost:5173', // if using Vite
+    'https://waste-mernstack.onrender.com', 
+    'https://*.vercel.app'
+  ],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization', 'Cookie']
 }));
 
 
