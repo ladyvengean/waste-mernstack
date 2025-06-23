@@ -5,7 +5,7 @@ import AuthPage from './pages/AuthPage';
 import MainPage from './pages/MainPage';
 import ResultPage from './pages/ResultPage';
 import UserProfile from './pages/UserProfile';
-import AdminLanding from './pages/adminLanding';
+import AdminLanding from './pages/AdminLanding';
 import AdminEntry from './pages/AdminEntry';
 import AdminWork from './pages/AdminWork';
 
