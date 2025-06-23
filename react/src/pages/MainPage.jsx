@@ -71,7 +71,7 @@ function MainPage() {
       const compressedFile = await imageCompression(image, options);
       const base64String = await readBase64(compressedFile);
 
-      const result = await axios.post('http://localhost:8000/api/v1/upload/gemini', {
+      const result = await axios.post('https://waste-mernstack.onrender.com/api/v1/upload/gemini', {
         imageData: base64String,
       }, {
         headers: { 'Content-Type': 'application/json' }
