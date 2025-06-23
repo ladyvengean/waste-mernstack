@@ -18,9 +18,8 @@ const app = express();
 app.use(cors({
   origin: [
     'http://localhost:3000',
-    'http://localhost:5173', // if using Vite
-    'https://waste-mernstack-rjb8.vercel.app/', 
-    'https://*.vercel.app'
+    'http://localhost:5173',
+    'https://waste-mernstack-rjb8.vercel.app' 
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
